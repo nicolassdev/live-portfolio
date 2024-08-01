@@ -18,15 +18,13 @@ const HeroSection = () => {
                 // Same substring at the start will only be typed out once, initially
                 "Anthony Daen",
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "FrontEnd Developer",
+                "Front End Developer",
                 1000,
                 "Mobile Developer",
                 1000,
-                "Web Developer",
-                1000,
               ]}
               wrapper="span"
-              speed={50}
+              speed={30}
               repeat={Infinity}
             />
           </h1>
@@ -53,13 +51,13 @@ const HeroSection = () => {
         </div>
         {/* Imagee */}
         <div className="col-span-5 place-self-center mt-10 lg:mt-0">
-          <div className="rounded-full bg-[#2d8b7f] w-[310px] h-[310px] lg:w[400px] lg:h[400px] relative">
+          <div className="w-[310px] h-[310px] lg:w[400px] lg:h[400px] relative">
             <Image
-              src="/images/hero-img.svg"
+              src="/images/img.svg"
               alt="hero image"
               className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={230}
-              height={230}
+              width={320}
+              height={320}
             />
           </div>
         </div>

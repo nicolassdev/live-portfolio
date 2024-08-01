@@ -1,11 +1,57 @@
-import React from "react";
+"use client";
+import React, { useTransition, useState } from "react";
 import Image from "next/image";
+import TabButton from "./TabButton";
+
+const TAB_DATA = [
+  {
+    title: "Skills",
+    id: "skills",
+    content: (
+      <ul>
+        <li>Node.js</li>
+        <li>PHP</li>
+        <li>CSHARP</li>
+        <li>Vue</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Education",
+    id: "education",
+    content: (
+      <ul>
+        <li>Bachelor of Science in Computer Science</li>
+        <li>Computer Systems Insitute Inc.</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Certification",
+    id: "certification",
+    content: (
+      <ul>
+        <li>Front End Development</li>
+        <li>Pixel8 Academy</li>
+      </ul>
+    ),
+  },
+];
+
 const AboutSection = () => {
+  const [tab, setTab] = useState("skills");
+  const [isPending, startTransition] = useTransition();
+  // function takes id
+  const handleTabChange = (id) => {
+    startTransition(() => {
+      setTab(id);
+    });
+  };
   return (
-    <section>
+    <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:py-16">
         <Image
-          src="/images/about-me.jpg"
+          src="/images/about-img.svg"
           alt="hero image"
           className="rounded mt-3"
           width={450}
@@ -24,12 +70,32 @@ const AboutSection = () => {
             developer, contributing to innovative projects and making a positive
             impact through my work.
           </p>
-          <div className="">flex flex-row mt-8</div>
-          <span className="mr-3 font-semibold hover:text-white text-[#ADB7BE] border-b border-teal-500">
-            Skills
-          </span>
-          <span>Experience</span>
-          <span>Education</span>
+          <div className="flex flex-row mt-8 ">
+            <TabButton
+              selectTab={() => handleTabChange("skills")}
+              active={tab === "skills"}
+            >
+              {" "}
+              Skills{" "}
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("education")}
+              active={tab === "education"}
+            >
+              {" "}
+              Education{" "}
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("certification")}
+              active={tab === "certification"}
+            >
+              {" "}
+              Certification{" "}
+            </TabButton>
+          </div>
+          <div className="mt-6 md:text-md">
+            {TAB_DATA.find((t) => t.id == tab).content}
+          </div>
         </div>
       </div>
     </section>
