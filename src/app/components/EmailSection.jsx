@@ -30,7 +30,7 @@ const EmailSection = () => {
         </div>
       </div>
       {/* FORM  */}
-      <div>
+      <div className="mt-5">
         <form className="flex flex-col gap-6" action="">
           {/* EMAIL INPUT */}
           <div className="mb-3">
@@ -44,7 +44,7 @@ const EmailSection = () => {
               type="email"
               id="email"
               required
-              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9]  text-gray-100 text-md rounded-lg block w-full p-3.5"
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9]  text-gray-100 text-md rounded-lg block w-full p-4"
               placeholder="nicolasdaen@gmail.com"
             />
           </div>
@@ -61,7 +61,7 @@ const EmailSection = () => {
               type="text"
               id="subject"
               required
-              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9]  text-gray-100 text-md rounded-lg block w-full p-3.5"
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9]  text-gray-100 text-md rounded-lg block w-full p-4"
               placeholder="Just saying hi"
             />
           </div>
