@@ -8,7 +8,7 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul>
+      <ul className="list-disc pl-2 text-sm">
         <li>Node.js</li>
         <li>PHP</li>
         <li>CSHARP</li>
@@ -22,7 +22,9 @@ const TAB_DATA = [
     content: (
       <ul>
         <li>Bachelor of Science in Computer Science</li>
-        <li>Computer Systems Insitute Inc.</li>
+        <li className="font-semibold text-[#ADB7BE] text-sm">
+          Computer Systems Insitute
+        </li>
       </ul>
     ),
   },
@@ -32,7 +34,7 @@ const TAB_DATA = [
     content: (
       <ul>
         <li>Front End Development</li>
-        <li>Pixel8 Academy</li>
+        <li className="font-semibold text-[#ADB7BE] text-sm">Pixel8 Academy</li>
       </ul>
     ),
   },
@@ -52,13 +54,14 @@ const AboutSection = () => {
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:py-16">
         <Image
           src="/images/about-img.svg"
+          draggable="false"
           alt="hero image"
           className="rounded mt-3"
           width={450}
           height={450}
         />
         <div>
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+          <h2 className="text-4xl font-bold text-white mb-4 mt-6">About Me</h2>
           <p className="text-base lg:text-lg">
             I am a passionate web developer with a deep love for coding and
             creating intuitive, user-friendly web interfaces. Although I am

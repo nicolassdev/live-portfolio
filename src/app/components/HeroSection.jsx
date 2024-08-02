@@ -20,7 +20,7 @@ const HeroSection = () => {
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
                 "Front End Developer",
                 1000,
-                "Mobile Developer",
+                "Web Developer",
                 1000,
               ]}
               wrapper="span"
@@ -40,7 +40,7 @@ const HeroSection = () => {
             <button className="px-6 py-4 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-teal-500 via- hover:bg-teal-300  text-white mt-3">
               Hire Me
             </button>
-            <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-teal-500  text-white  mt-3">
+            <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-teal-500  text-white mt-3">
               <span className="block bg-[#121212] hover:bg-slate-600 rounded-full px-6 py-4">
                 <a href="/files/Resume.pdf" target="_blank" className="btn">
                   Download CV
@@ -50,10 +50,11 @@ const HeroSection = () => {
           </div>
         </div>
         {/* Imagee */}
-        <div className="col-span-5 place-self-center mt-10 lg:mt-0">
-          <div className="w-[310px] h-[310px] lg:w[400px] lg:h[400px] relative">
+        <div className="col-span-5 place-self-center mt-9 lg:mt-0">
+          <div className="rounded-full bg-[#208181] w-[310px] h-[310px] lg:w-[400px] lg:h-[400px] relative">
             <Image
-              src="/images/img.svg"
+              src="/images/hero-image.svg"
+              draggable="false"
               alt="hero image"
               className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               width={320}
