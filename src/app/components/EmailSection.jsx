@@ -1,37 +1,73 @@
-import React from "react";
-import GithubIcon from "../../../public/images/github-img.svg";
-import LinkedinIcon from "../../../public/images/linkedin-img.svg";
-import FacebookIcon from "../../../public/images/fb-img.svg";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { SiGithub } from "react-icons/si";
+import { SiLinkedin } from "react-icons/si";
+import { SiFacebook } from "react-icons/si";
+import { SiMessenger } from "react-icons/si";
+import { SiInstagram } from "react-icons/si";
 
 const EmailSection = () => {
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/send";
+    // FORM REQ FOR SENDING DATA TO SERVER
+    const options = {
+      method: "POST", //METHOD IS POST BECAUSE WE ARE SENDING DATA
+      //Tell the server we're sending Json
+      headers: {
+        "Contant-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+    const responce = await fetch(endpoint, options);
+    const resData = await responce.json();
+
+    if (resData.status === 200) {
+      console.log("Message sent.");
+      setEmailSubmitted(true);
+    }
+  };
   return (
     <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">Let's Connect</h5>
+        <h5 className="text-xl font-bold text-white my-2">Connect with me</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           I am now looking for possibilities in web development. If you're
           seeking for a devoted and skilled developer to bring your initiatives
           to life, let's collaborate! Please contact me via the form below or on
           social media.
         </p>
-        <div className="socials flex flex-row gap-2">
+        <div className="socials flex flex-row gap-4">
           <Link href="github.com">
-            <Image src={GithubIcon} alt="GitHub Icon" />
+            <SiGithub size={40} />
           </Link>
-          <Link href="linkedin.com">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+          <Link href="github.com">
+            <SiFacebook size={40} />
           </Link>
-          <Link href="facebook.com">
-            <Image src={FacebookIcon} alt="Facebook Icon" />
+          <Link href="github.com">
+            <SiLinkedin size={40} />
+          </Link>
+
+          <Link href="messenger.com">
+            <SiMessenger size={40} />
+          </Link>
+          <Link href="messenger.com">
+            <SiInstagram size={40} />
           </Link>
         </div>
       </div>
       {/* FORM  */}
       <div className="mt-5">
-        <form className="flex flex-col gap-6" action="">
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit} action="">
           {/* EMAIL INPUT */}
           <div className="mb-3">
             <label
@@ -41,6 +77,7 @@ const EmailSection = () => {
               Your Email
             </label>
             <input
+              name="email"
               type="email"
               id="email"
               required
@@ -58,6 +95,7 @@ const EmailSection = () => {
               Subject
             </label>
             <input
+              name="subject"
               type="text"
               id="subject"
               required
@@ -86,6 +124,14 @@ const EmailSection = () => {
           >
             Send Message
           </button>
+          {
+            //IF EMAIL SUBMITTED SHOWING MESSAGE SHOW UP
+            emailSubmitted && (
+              <p className="text-green-500 text-sm mt-2">
+                Email sent succesfully!
+              </p>
+            )
+          }
         </form>
       </div>
     </section>
