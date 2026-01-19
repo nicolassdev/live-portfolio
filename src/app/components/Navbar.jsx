@@ -5,18 +5,9 @@ import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 const navLinks = [
-  {
-    title: "About",
-    path: "#about",
-  },
-  {
-    title: "Project",
-    path: "#project",
-  },
-  {
-    title: "Contact",
-    path: "#contact ",
-  },
+  { title: "About", path: "#about" },
+  { title: "Project", path: "#project" },
+  { title: "Contact", path: "#contact" }, // ✅ FIXED
 ];
 
 export const Navbar = () => {
