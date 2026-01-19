@@ -2,18 +2,37 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
+import Link from "next/link";
 const projectsData = [
   {
     id: 1,
-    title: "BikeShop Website",
-    description: "BikeShop using PHP",
-    image: "/projects/bikeshop.png",
+    title: "JuanHR",
+    description: "Human Resource Information Management System",
+    image: "/projects/juanhr.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
   },
   {
     id: 2,
+    title: "Realty",
+    description: "Sunwest Realty using WordPress",
+    image: "/projects/realty.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "",
+    previewUrl: "https://stg-realty.pixel8.ph/",
+  },
+  {
+    id: 3,
+    title: "Pristine Memorial Garden",
+    description: "Pristine Memorial using WordPress",
+    image: "/projects/pristine-memorial.png",
+    tag: ["All", "Web"],
+    gitUrl: "",
+    previewUrl: "https://stg-pristinememorial.pixel8.ph/",
+  },
+  {
+    id: 4,
     title: "BikeShop Website",
     description: "BikeShop using PHP",
     image: "/projects/bikeshop.png",

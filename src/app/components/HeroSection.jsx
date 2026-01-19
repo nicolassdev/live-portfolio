@@ -49,16 +49,16 @@ const HeroSection = () => {
             </button>
           </div>
         </div>
-        {/* Imagee */}
-        <div className="col-span-5 place-self-center mt-9 lg:mt-0">
-          <div className="rounded-full bg-[#208181] w-[310px] h-[310px] lg:w-[400px] lg:h-[400px] relative">
+        {/* Image */}
+        <div className="col-span-5 place-self-center mt-10 lg:mt-0">
+          <div className="relative rounded-full bg-[#208181] w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 overflow-hidden shadow-2xl">
             <Image
-              src="/images/hero-image.svg"
-              draggable="false"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={320}
-              height={320}
+              src="/images/hero-image1.png"
+              alt="Profile picture"
+              fill
+              priority
+              draggable={false}
+              className="object-cover object-center"
             />
           </div>
         </div>
