@@ -40,12 +40,12 @@ const EmailSection = () => {
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">Connect with me</h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          I am now looking for possibilities in web development. If you're
-          seeking for a devoted and skilled developer to bring your initiatives
-          to life, let's collaborate! Please contact me via the form below or on
-          social media.
-        </p>
+          <p className="text-[#ADB7BE] mb-4 max-w-md">
+            I am now looking for possibilities in web development. If you&apos;re
+            seeking for a devoted and skilled developer to bring your initiatives
+            to life, let&apos;s collaborate! Please contact me via the form below or on
+            social media.
+          </p>
         <div className="socials flex flex-row gap-4">
           <Link href="github.com">
             <SiGithub size={40} />
@@ -114,7 +114,7 @@ const EmailSection = () => {
               name="message"
               id="message"
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9]  text-gray-100 text-md rounded-lg block w-full p-3.5"
-              placeholder="Let's talk about..."
+              placeholder="Let&apos;s talk about..."
             />
           </div>
           {/* BUTTON */}
