@@ -19,7 +19,7 @@ const projectsData = [
     description: "Sunwest Realty using WordPress",
     image: "/projects/realty.png",
     tag: ["All", "Mobile"],
-    gitUrl: "",
+    gitUrl: "/",
     previewUrl: "https://stg-realty.pixel8.ph/",
   },
   {
@@ -28,7 +28,7 @@ const projectsData = [
     description: "Pristine Memorial using WordPress",
     image: "/projects/pristine-memorial.png",
     tag: ["All", "Web"],
-    gitUrl: "",
+    gitUrl: "/",
     previewUrl: "https://stg-pristinememorial.pixel8.ph/",
   },
   {
