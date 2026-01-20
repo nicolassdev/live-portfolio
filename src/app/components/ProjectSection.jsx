@@ -31,8 +31,17 @@ const projectsData = [
     gitUrl: "/",
     previewUrl: "https://stg-pristinememorial.pixel8.ph/",
   },
-  {
+    {
     id: 4,
+    title: "LMS",
+    description: "Learning Management System of CSI",
+    image: "/projects/lms.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 5,
     title: "BikeShop Website",
     description: "BikeShop using PHP",
     image: "/projects/bikeshop.png",
