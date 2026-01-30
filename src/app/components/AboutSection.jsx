@@ -11,8 +11,10 @@ const TAB_DATA = [
       <ul className="list-disc pl-2 text-sm">
         <li>Node.js</li>
         <li>PHP</li>
-        <li>CSHARP</li>
+        <li>C#</li>
         <li>Vue</li>
+        <li>Javascript</li>
+        <li>Wordpress</li>
       </ul>
     ),
   },
