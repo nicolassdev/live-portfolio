@@ -11,14 +11,14 @@ const projectsData = [
     image: "/projects/juanhr.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://erp.pixel8.ph/erp/#/login",
   },
   {
     id: 2,
     title: "Realty",
     description: "Sunwest Realty using WordPress",
     image: "/projects/realty.png",
-    tag: ["All", "Mobile"],
+    tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "https://stg-realty.pixel8.ph/",
   },
@@ -31,8 +31,17 @@ const projectsData = [
     gitUrl: "/",
     previewUrl: "https://stg-pristinememorial.pixel8.ph/",
   },
-    {
+  {
     id: 4,
+    title: "South Eastern Fiber",
+    description: "South Eastern Fiber using WordPress",
+    image: "/projects/sef.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "https://southeasternfiber.com/",
+  },
+  {
+    id: 5,
     title: "LMS",
     description: "Learning Management System of CSI",
     image: "/projects/lms.png",
@@ -41,7 +50,7 @@ const projectsData = [
     previewUrl: "/",
   },
   {
-    id: 5,
+    id: 6,
     title: "BikeShop Website",
     description: "BikeShop using PHP",
     image: "/projects/bikeshop.png",
@@ -58,7 +67,7 @@ const ProjectSection = () => {
   };
 
   const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
+    project.tag.includes(tag),
   );
 
   return (
