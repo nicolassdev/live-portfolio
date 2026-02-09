@@ -51,6 +51,15 @@ const projectsData = [
   },
   {
     id: 6,
+    title: "NSTP Management System",
+    description: "NSTP Management System of CSI",
+    image: "/projects/nstp.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 7,
     title: "BikeShop Website",
     description: "BikeShop using PHP",
     image: "/projects/bikeshop.png",
