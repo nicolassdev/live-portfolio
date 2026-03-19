@@ -1,7 +1,10 @@
 "use client";
-import React, { useTransition, useState } from "react";
+import React, { useTransition, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const TAB_DATA = [
   {
@@ -45,14 +48,47 @@ const TAB_DATA = [
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
+  const sectionRef = useRef(null);
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
   // function takes id
   const handleTabChange = (id) => {
     startTransition(() => {
       setTab(id);
     });
   };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, x: -80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+        },
+      );
+
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0, x: 80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          delay: 0.2,
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="about" className="text-white">
+    <section ref={sectionRef} id="about" className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:py-16">
         <Image
           src="/images/about-img.svg"
@@ -62,7 +98,7 @@ const AboutSection = () => {
           width={450}
           height={450}
         />
-        <div>
+        <div ref={textRef}>
           <h2 className="text-4xl font-bold text-white mb-4 mt-6">About Me</h2>
           <p className="text-base lg:text-lg">
             I am a passionate web developer with a deep love for coding and

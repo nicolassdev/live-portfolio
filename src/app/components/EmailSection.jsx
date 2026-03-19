@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Link from "next/link";
+import { gsap } from "gsap";
 import {
   SiGithub,
   SiLinkedin,
@@ -14,7 +15,8 @@ import {
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const formRef = useRef(null);
+  const socialRef = useRef(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -30,7 +32,7 @@ const EmailSection = () => {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         formData,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
       );
 
       setEmailSubmitted(true);
@@ -43,8 +45,39 @@ const EmailSection = () => {
     }
   };
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        socialRef.current,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          scrollTrigger: { trigger: socialRef.current, start: "top 85%" },
+        },
+      );
+      gsap.fromTo(
+        formRef.current,
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          delay: 0.2,
+          scrollTrigger: { trigger: formRef.current, start: "top 85%" },
+        },
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="contact" className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
+    <section
+      ref={formRef}
+      id="contact"
+      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+    >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">Connect with me</h5>
@@ -54,11 +87,21 @@ const EmailSection = () => {
         </p>
 
         <div className="flex gap-4 text-white">
-          <Link href="#"><SiGithub size={36} /></Link>
-          <Link href="#"><SiFacebook size={36} /></Link>
-          <Link href="#"><SiLinkedin size={36} /></Link>
-          <Link href="#"><SiMessenger size={36} /></Link>
-          <Link href="#"><SiInstagram size={36} /></Link>
+          <Link href="#">
+            <SiGithub size={36} />
+          </Link>
+          <Link href="#">
+            <SiFacebook size={36} />
+          </Link>
+          <Link href="#">
+            <SiLinkedin size={36} />
+          </Link>
+          <Link href="#">
+            <SiMessenger size={36} />
+          </Link>
+          <Link href="#">
+            <SiInstagram size={36} />
+          </Link>
         </div>
       </div>
 

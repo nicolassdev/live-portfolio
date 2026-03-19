@@ -1,8 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
-import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const projectsData = [
   {
     id: 1,
@@ -68,8 +72,10 @@ const projectsData = [
     previewUrl: "/",
   },
 ];
+
 const ProjectSection = () => {
   const [tag, setTag] = useState("All");
+  const cardsRef = useRef(null);
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -78,6 +84,31 @@ const ProjectSection = () => {
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag),
   );
+
+  // ✅ useEffect wraps ALL the GSAP code
+  useEffect(() => {
+    if (!cardsRef.current) return; // guard: don't run if ref is null
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cardsRef.current.children,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 85%",
+          },
+        },
+      );
+    }, cardsRef);
+
+    return () => ctx.revert(); // ✅ cleanup is INSIDE useEffect's return
+  }, [filteredProjects]); // re-runs when filter tag changes
 
   return (
     <section id="project">
@@ -101,7 +132,10 @@ const ProjectSection = () => {
           isSelected={tag === "Mobile"}
         />
       </div>
-      <div>
+      <div
+        ref={cardsRef}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
         {filteredProjects.map((project) => (
           <ProjectCard
             key={project.id}
